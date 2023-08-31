@@ -1,14 +1,15 @@
 # Introduction
 
-This is a sample e-commerce application built for learning purposes.
+This is a sample e-commerce application built for KodeKloud. The original deployment was outdated so I reployed it on my end and updated the steps.
 
-Here's how to deploy it on CentOS systems:
+Here's how to deploy it on CentOS/RHEL systems:
 
 ## Deploy Pre-Requisites
 
 1. Install FirewallD
 
 ```
+sudo yum update -y
 sudo yum install -y firewalld
 sudo service firewalld start
 sudo systemctl enable firewalld
@@ -20,7 +21,6 @@ sudo systemctl enable firewalld
 
 ```
 sudo yum install -y mariadb-server
-sudo vi /etc/my.cnf
 sudo service mariadb start
 sudo systemctl enable mariadb
 ```
@@ -65,6 +65,18 @@ Run sql script
 mysql < db-load-script.sql
 ```
 
+5. Update Database bind address
+
+Open the SQL config file found in `/etc/my.cnf` and insert the below line of code:
+
+```
+[mysqlnd]
+bind-address = 0.0.0.0
+```
+
+*The above bind address allows for calls to the database from anywhere. Not recommended in PROD as this should be the private IP or subnet of the webserver.*
+
+After updating the config file, run `systemctl restart mariadb`.
 
 ## Deploy and Configure Web
 
