@@ -120,22 +120,20 @@ git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/ht
 
 Update [index.php](https://github.com/kodekloudhub/learning-app-ecommerce/blob/13b6e9ddc867eff30368c7e4f013164a85e2dccb/index.php#L107) file to connect to the right database server. In this case `localhost` since the database is on the same server.
 
+Open the `index.php` file in your preferred editor and update this part of the code as seen below:
+
 ```
-sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
 
               <?php
-                        $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
+                        $link = mysqli_connect('localhost', 'ecomuser', 'ecompassword', 'ecomdb');
                         if ($link) {
                         $res = mysqli_query($link, "select * from products;");
                         while ($row = mysqli_fetch_assoc($res)) { ?>
 ```
 
-> ON a multi-node setup remember to provide the IP address of the database server here.
-```
-sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
-```
+> ON a multi-node setup remember to provide the IP address of the database server instead of `localhost`.
 
-6. Test
+7. Test
 
 ```
 curl http://localhost
