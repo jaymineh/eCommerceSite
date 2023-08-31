@@ -131,6 +131,8 @@ Open the `index.php` file in your preferred editor and update this part of the c
                         while ($row = mysqli_fetch_assoc($res)) { ?>
 ```
 
+After modifying the `index.php` file, restart the database service so the new changes are taken into effect.
+
 > ON a multi-node setup remember to provide the IP address of the database server instead of `localhost`.
 
 7. Test
@@ -138,3 +140,13 @@ Open the `index.php` file in your preferred editor and update this part of the c
 ```
 curl http://localhost
 ```
+
+```
+curl http://<PublicIP>:80
+```
+
+8. Visit Webpage
+
+After checking on the terminal to see if the website is reachable, try to reach it via it's URL, which in this case would be the IP address of the server.
+
+![Webpage](shopping.png)
