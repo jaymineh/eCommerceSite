@@ -1,6 +1,6 @@
 # Introduction
 
-This is a sample e-commerce application built for KodeKloud. The original deployment was outdated so I reployed it on my end and updated the steps.
+This is a sample e-commerce application built for KodeKloud. The original deployment was outdated so I reployed it on my end and updated the steps. This was achieved on a LAMP stack.
 
 Here's how to deploy it on CentOS/RHEL systems:
 
